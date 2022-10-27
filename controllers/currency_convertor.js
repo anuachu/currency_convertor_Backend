@@ -15,18 +15,19 @@ router.post('/',(req, res) => {
   const cardexpirationdate = req.body.cardexpirationdate
   const cardcvv = req.body.cardcvv
   const cardtype = req.body.cardtype
-
-  Credit
-    .create(cardnumber, cardholdername,cardexpirationdate,cardcvv,cardtype)
-    .then(creditcard => res.json(creditcard))
-})
-
-router.put('/:id', (req, res) => {
   const balance = req.body.balance
 
   Credit
-    .update(req.params.id,balance)
-    .then(updatedBalance => res.json(updatedBalance))
+    .create(cardnumber,cardholdername,cardexpirationdate,cardcvv,cardtype,balance)
+    .then(creditcard => res.json(creditcard))
 })
+
+// router.put('/api/currency/:id', (req, res) => {
+//   const balance = req.body.balance
+
+//   Credit
+//     .update(req.params.id,balance)
+//     .then(updatedBalance => res.json(updatedBalance))
+// })
 
 module.exports = router
