@@ -15,6 +15,14 @@ const Credit = {
     return db
       .query(sql, [cardnumber,cardholdername,cardexpirationdate,cardcvv,cardtype])
       .then(dbRes => dbRes.rows[0])
+  },
+  update: (balance) => {
+    const sql = `Update creditcard SET balance = $3 Where id = $2 
+    RETURNING *`
+
+    return db
+      .query(sql, [balance])
+      .then(dbRes => dbRes.rows[0])
   }
 }
 

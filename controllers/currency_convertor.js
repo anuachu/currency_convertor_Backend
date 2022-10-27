@@ -21,4 +21,12 @@ router.post('/',(req, res) => {
     .then(creditcard => res.json(creditcard))
 })
 
+router.put('/:id', (req, res) => {
+  const balance = req.body.balance
+
+  Credit
+    .update(req.params.id,balance)
+    .then(updatedBalance => res.json(updatedBalance))
+})
+
 module.exports = router
